@@ -18,11 +18,13 @@ import java.security.Principal;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @Autowired
-    private RoleService roleService;
+    private final RoleService roleService;
+    private final UserService userService;
 
-    @Autowired
-    private UserService userService;
+    public AdminController(RoleService roleService, UserService userService) {
+        this.roleService = roleService;
+        this.userService = userService;
+    }
 
     @GetMapping
     public String adminHomeAndAllUsers(Model model, Principal principal) {

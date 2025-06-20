@@ -23,12 +23,13 @@ import java.io.IOException;
 @RequestMapping("/login")
 public class LoginController {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
+    private final SuccessUserHandler successUserHandler;
 
-
-    @Autowired
-    private SuccessUserHandler successUserHandler;
+    public LoginController(AuthenticationManager authenticationManager, SuccessUserHandler successUserHandler) {
+        this.authenticationManager = authenticationManager;
+        this.successUserHandler = successUserHandler;
+    }
 
     @GetMapping
     public String loginForm() {

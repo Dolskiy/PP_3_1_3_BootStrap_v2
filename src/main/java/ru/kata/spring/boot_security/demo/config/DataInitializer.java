@@ -19,14 +19,10 @@ public class DataInitializer {
     @Bean
     CommandLineRunner initDatabase(RoleRepo roleRepo, UserRepo userRepo, PasswordEncoder passwordEncoder) {
         return args -> {
-
-            Role adminRole = new Role();
-            adminRole.setName("ROLE_ADMIN");
+            Role adminRole = new Role("ROLE_ADMIN");
             roleRepo.save(adminRole);
 
-
-            Role userRole = new Role();
-            userRole.setName("ROLE_USER");
+            Role userRole = new Role("ROLE_USER");
             roleRepo.save(userRole);
 
             User admin = new User();

@@ -16,11 +16,13 @@ import ru.kata.spring.boot_security.demo.service.UserDetailServiceImpl;
 @Configuration
 public class WebSecurityConfig {
 
-    @Autowired
     private UserDetailServiceImpl userDetailServiceImpl;
-
-    @Autowired
     private SuccessUserHandler successUserHandler;
+
+    public WebSecurityConfig(UserDetailServiceImpl userDetailServiceImpl, SuccessUserHandler successUserHandler) {
+        this.userDetailServiceImpl = userDetailServiceImpl;
+        this.successUserHandler = successUserHandler;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
